@@ -15,6 +15,17 @@ avi.last_name = "Flombaum"
 
 some_knowledge = avi.teach 
 
-steve.learn(some_knowledge)
+some_more_knowledge = avi.teach
 
-puts "Steve just learned this important knowledge: '#{steve.knowledge.first}' from Avi"
+steve.learn(some_knowledge)
+steve.learn (some_more_knowledge)
+
+puts "Steve just learned this important knowledge: '#{steve.knowledge[0]}' from Avi"
+
+puts "Steve just learned this important knowledge: '#{steve.knowledge[1]}' from Avi"
+
+jim = User.new
+
+jim.first_name = "jim"
+jim.last_name = "henson"
+#jim.learn
