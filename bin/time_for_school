@@ -3,7 +3,7 @@
 require_relative "../lib/user.rb"
 require_relative "../lib/teacher.rb"
 require_relative "../lib/student.rb"
-
+require 'pry'
 steve = Student.new
 steve.first_name = "Steve"
 steve.last_name = "Jobs"
@@ -12,9 +12,36 @@ avi = Teacher.new
 avi.first_name = "Avi"
 avi.last_name = "Flombaum"
 
-
 some_knowledge = avi.teach 
 
 steve.learn(some_knowledge)
 
-puts "Steve just learned this important knowledge: '#{steve.knowledge.first}' from Avi"
+puts "#{steve.first_name} just learned this important knowledge: '#{steve.knowledge.last}' from #{avi.first_name}."
+
+#### Bonus ####
+## New User - Jim - is neither a student nor an instructor
+# jim = User.new
+# jim.first_name = "Jimmy"
+# jim.last_name = "McGill"
+
+# jim.learn(some_knowledge) #=> undefined method 'learn' for User instance
+# this occurs because User class is our super class and does not previously called upon method
+# the method learn is currently only a Student instance method
+
+## Have avi teach steve some more important things
+
+#some_knowledge = avi.teach
+steve.learn(avi.teach)
+#binding.pry
+puts "#{steve.first_name} just learned this important knowledge: '#{steve.knowledge.last}' from #{avi.first_name}."
+#some_knowledge = avi.teach
+steve.learn(avi.teach)
+puts "#{steve.first_name} just learned this important knowledge: '#{steve.knowledge.last}' from #{avi.first_name}."
+
+## Create a new student and have avi teach them some important things
+jim = Student.new
+jim.first_name = "Jimmy"
+jim.last_name = "McGill"
+
+jim.learn(avi.teach)
+puts "#{jim.first_name} just learned this important knowledge: '#{jim.knowledge.last}' from #{avi.first_name}."
